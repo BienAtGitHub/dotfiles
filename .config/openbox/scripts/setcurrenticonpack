@@ -1,0 +1,16 @@
+#!/bin/dash
+CURR_ICON=$(cat ~/.config/gtk-3.0/settings.ini | grep gtk-icon-theme-name | cut -c 21-)
+printf "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+<openbox_pipe_menu xmlns=\"http://openbox.org/\"
+	xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+	xsi:schemaLocation=\"http://openbox.org/\" >
+	<separator label=\"Current: $CURR_ICON\" />"
+ls -1 /usr/share/icons |
+	while read icon; do
+		printf "	<item label=\"$icon\">
+		<action name=\"Execute\">
+			<command>dash ~/.config/openbox/scripts/switchtheme gtk-icon-theme-name \"$icon\"</command>
+		</action>
+	</item>\n";
+	done
+printf "</openbox_pipe_menu>"

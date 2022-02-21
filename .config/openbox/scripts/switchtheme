@@ -1,0 +1,11 @@
+#!/bin/dash
+if gtk-query-settings | grep "$2"; then
+	notify-send Openbox "Already set to $2."
+	exit
+fi
+notify-send Openbox "Setting theme to $2..."
+sed -i "s/$1=.*/$1=$2/g" ~/.gtkrc-2.0
+sed -i "s/$1=.*/$1=$2/g" ~/.config/gtk-3.0/settings.ini
+sed -i "s/<!-- THEME NAME --><name>.*<\/name>/<!-- THEME NAME --><name>$2<\/name>/" ~/.config/openbox/rc.xml
+gtk-update-icon-cache
+openbox --reconfigure

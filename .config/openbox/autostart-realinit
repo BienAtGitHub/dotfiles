@@ -1,0 +1,26 @@
+# picom
+picom &
+# Let picom settle down for a second
+sleep 1
+# Setup a fake display for NoMachine
+# xrandr --newmode "1920x1080"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+# xrandr --addmode VIRTUAL1 "1920x1080"
+# xrandr --output VIRTUAL1 --mode 1920x1080 --left-of VGA1
+# Let display settle down for a second
+#sleep 1
+nitrogen --restore
+# Polkit GUI
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+# X Resources
+xrdb -merge ~/.Xresources &
+# AudioRelay server
+audiorelay --minimized &
+dunst &
+tint2 &
+viper-gui -i &
+ibus-daemon --xim --daemonize &
+# Start video wallpaper on VIRTUAL1 display with lowest priority.
+# nice -n 19 mpv --profile=wallpaper ~/test.mp4 &
+# chrt -p -i 0 $!
+electron-mail &
+alttab -font xft:Roboto-Medium &

@@ -1,0 +1,2 @@
+# Use custom piped autostart init file instead (no root required)
+sh ~/.config/openbox/autostart-realinit &

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu xmlns="http://openbox.org/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://openbox.org/
+                file:///usr/share/openbox/menu.xsd">
+	<menu id="right-menu" label="Openbox 3">
+		<separator label="Settings" />
+		<seperator />
+		<separator label="Appearance" />
+		<menu id="settings-theme-pack-menu" label="Switch Theme" execute="sh ~/.config/openbox/scripts/setcurrenttheme" />
+		<menu id="settings-icon-pack-menu" label="Switch Icon Pack" execute="sh ~/.config/openbox/scripts/setcurrenticonpack" />
+		<menu id="settings-resolution-menu" label="Screen Resolution" execute="python3 ~/.config/openbox/scripts/obxrandr.py" />
+		<item label="Reload X Resources" execute="xrdb ~/.Xresources" />
+		<seperator />
+		<separator label="Openbox" />
+		<item label="Startup Applications"><action name="Execute"><command>geany ~/.config/openbox/autostart-realinit</command></action></item> 
+		<item label="Environment Variables"><action name="Execute"><command>geany ~/.config/openbox/environment</command></action></item> 
+		<item label="Openbox Menu (left)"><action name="Execute"><command>geany ~/.config/openbox/menu-left.xml</command></action></item>
+		<item label="Openbox Menu (right)"><action name="Execute"><command>geany ~/.config/openbox/menu-right.xml</command></action></item>
+		<item label="Openbox RC"><action name="Execute"><command>geany ~/.config/openbox/rc.xml</command></action></item>
+		<item label="Reconfigure"><action name="Reconfigure" /></item>
+		<item label="Restart"><action name="Restart" /></item>
+		<item label="Exit"><action name="Exit" /></item>
+		<separator label="Power" />
+		<item label="Reboot"><action name="Execute"><command>pkexec /sbin/reboot</command></action></item>
+		<item label="Poweroff"><action name="Execute"><command>pkexec /sbin/poweroff</command></action></item>
+	</menu>
+</openbox_menu>

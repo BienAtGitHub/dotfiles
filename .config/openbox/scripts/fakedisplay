@@ -1,0 +1,5 @@
+#!/bin/dash
+xrandr --addmode VIRTUAL1 1920x1080_60.00
+xrandr --output VIRTUAL1 --mode 1920x1080_60.00 --left-of VGA1
+sleep 1
+nitrogen --restore
